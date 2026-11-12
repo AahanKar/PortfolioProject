@@ -1,6 +1,22 @@
 import components.map.Map;
 import components.queue.Queue;
 
+/**
+ * Kernel interface for the {@code Portfolio} component: a personal portfolio
+ * made of named sections, where each section holds an ordered sequence of text
+ * entries (for example, a "Projects" section with one entry per project).
+ *
+ * @mathmodel type PortfolioKernel is modeled by finite function from String to
+ *            string of String (each section name maps to the entries of that
+ *            section, in order)
+ * @initially
+ *
+ *            <pre>
+ * ensures
+ *  this = {}
+ *            </pre>
+ */
+
 public interface PortfolioKernel {
     /** Suggested section name for personal background. */
     String ABOUT_ME = "About Me";

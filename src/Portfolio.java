@@ -1,5 +1,10 @@
 import components.queue.Queue;
 
+/**
+ * Enhanced interface for the {@code Portfolio} component. Every method here can
+ * be implemented using only the kernel methods of {@link PortfolioKernel} and
+ * the methods of {@code Standard}.
+ */
 public interface Portfolio extends PortfolioKernel {
     /**
      * Adds {@code entry} to the end of the section called {@code sectionName},
