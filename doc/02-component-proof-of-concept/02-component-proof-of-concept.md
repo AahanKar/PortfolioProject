@@ -114,8 +114,7 @@ Below is further rationale/explanation for the rubric items above:
 > to create a new design. In you do end up picking one at random, you should
 > disclose that here as well.
 
-<!-- TODO: briefly argue your choice of design or design something
-new; then delete this comment -->
+I chose the Portfolio design because it is what I would be using. Since I am applying for internships and jobs, I wanted to have all of my information organized in one place. It is also the most realistic since I am currently attending classes while doing two internships. The Portfolio uses a queue map which I am familiar with from CSE 2221. Finally, I was being realistic about what I could do. The PortfolioTimeline requires some sorting and comparators which I am less familiar with. The GoalTracker is very small and does not really do much. However, if I do well with the Portfolio I can easily add either of these on top of my Portfolio.
 
 > Once you've argued your choice of design, make a branch in your new repo called
 > something like `proof-of-concept`. There are many ways to do this, but my
