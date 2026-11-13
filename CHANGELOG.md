@@ -1,30 +1,47 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All major changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Calendar Versioning](https://calver.org/) of
-the following form: YYYY.0M.0D.
+This file follows the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) standard and this project uses date-based versioning (CalVer). The format will be YYYY.MM.DD.
+
+## 2026.11.13
+
+### Added
+
+JUnit 4 test class called `Portfolio1LTest` to test the kernel and `Standard` methods: `addSection`, `removeSection`, `removeAnySection`, `hasSection`, `numberOfSections`, `clear` and `newInstance` and `transferFrom`.
+
+JUnit 4 test class called `PortfolioTest` to test the secondary methods: `addEntry`, `numberOfEntries`, `totalEntries`, `sectionNames`, `renameSection`, `merge`, `toMarkdown` and also `toString`, `equals` and `hashCode`.
+
+2 use case classes in the `src` folder to demonstrate different ways to use the component.
+
+Reflection complete in `06-component-finishing-touches.md`.
+
+### Changed
+
+Added Javadoc above `PortfolioKernel` and `Portfolio` interfaces.
+
+Improved README and folder structure for publishing.
 
 ## 2026.11.12
 
 ### Added
 
-- Designed kernel implementation `Portfolio1L` for Portfolio component, represented as a `Map` of section names to `Queue`s of entries
-- Added convention and correspondence for `Portfolio1L`
-- Designed abstract class `PortfolioSecondary` for Portfolio component
-- Implemented all enhanced methods using only kernel and `Standard` methods
-- Implemented `toString`, `equals`, and `hashCode` using only kernel methods
-- Designed kernel and enhanced interfaces for Portfolio component
-- Designed proof of concept for Portfolio component
+Brainstorming document for component. 3 potential designs were thought of. The chosen design was Portfolio (sections of entries). (Part 1)
+
+Proof of concept for component. `Portfolio` class with `main` method to store sections of entries. (Part 2)
+
+Interface `PortfolioKernel` that extends from `Standard`. It contains the methods `addSection`, `removeSection`, `removeAnySection`, `hasSection`, `numberOfSections`. It also contains the constants `ABOUT_ME`, `INTERESTS`, `PROJECTS`, and `GOALS`. (Part 3)
+
+Enhanced interface `Portfolio` containing the methods `addEntry`, `numberOfEntries`, `totalEntries`, `sectionNames`, `renameSection`, `merge`, and `toMarkdown`. (Part 3)
+
+Class diagram created using Mermaid. (Part 3)
+
+Abstract class `PortfolioSecondary` to implement the secondary methods using just methods from the kernel. Also has `toString`, `equals` and `hashCode`. (Part 4)
+
+Implementation of kernel using Map. `Portfolio1L` contains a `Map>` and has a documented convention and mapping. (Part 5)
 
 ### Changed
 
-- Decided section names are ordered with `String.compareTo` (uppercase before lowercase)
-- No kernel changes were needed for `PortfolioSecondary`, since `hasSection` and `numberOfSections` can check every kernel precondition
-- Changed usage of `java.util` types to using OSU `Queue` and `Map.Pair`
-- Added `sectionNames` to enhanced interface as kernel can't iterate through sections
-- Made `numberOfEntries` require section to exist rather than return 0
-- Specified that `toMarkdown` outputs sections in alphabetical order
-- Made `addSection` clear the contents of the `entries` argument (as it is consumed)
-- Added suggested section name constants to kernel interface`
+Renamed the proof of concept class.
+
+Renamed the file from `PortfolioInterface` to `Portfolio.java`. This allows `extends Standard` to work.
