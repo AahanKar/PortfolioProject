@@ -1,5 +1,6 @@
 import components.map.Map;
 import components.queue.Queue;
+import components.standard.Standard;
 
 /**
  * Kernel interface for the {@code Portfolio} component: a personal portfolio
@@ -17,7 +18,7 @@ import components.queue.Queue;
  *            </pre>
  */
 
-public interface PortfolioKernel {
+public interface PortfolioKernel extends Standard<Portfolio> {
     /** Suggested section name for personal background. */
     String ABOUT_ME = "About Me";
     /** Suggested section name for hobbies and interests. */
