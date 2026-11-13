@@ -1,8 +1,8 @@
 # Portfolio Part 1: Component Brainstorming
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
-- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
+- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->Aahan Kar
+- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment --> kar.50
+- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->11/11 @ 8:36 PM EST
 
 ## Assignment Overview
 
@@ -106,11 +106,13 @@ Below is further rationale/explanation for the rubric items above:
 > brainstorming. Plus it helps us get to know you better! Feel free to share
 > images in this section.
 
-<!-- TODO: briefly talk about your interests then delete this comment.
-Also, protip: you can preview what your response looks like by hitting
-the magnifying glass icon in the upper-right corner or pressing CTRL+K and
-then V. This kind of button combination is called a chord, for whatever
-reason -->
+I am a Data Analytics student at The Ohio State University with a concentration in Computational Analytics. I am set to graduate in May 2029. My goal is to get into some sort of data role, be it data analytics, data science or AI/ML engineering. I am most interested in taking real world messy data and making it useful, whether that be building a predictive model, dashboard or AI tool.
+
+I have worked At Trigent Software this summer helping to build an enterprise Streamlit prototype. Outside of work I have created a house price prediction model (98% R squared) and a diabetes classification model that I presented at the Big Data Analytics Associations Galleria.
+
+I am very passionate about community and education. I am the student representative for the Naperville Public Library Board of Trustees, I have volunteered as a fundraising team captain for Covenant House Illinois and have taught maths to K-3 students as a session leader for OneInMath. In my free time I love playing basketball and music. I played baseball through to high school and ran track and cross country. Something I have learnt from OSU is how much I value my friendships.
+
+Due to my interests I want to apply for internships and jobs. I would love to have somewhere that I can have one place to keep my background, projects and goals. As this is something I would use myself, I have created 3 different designs for a portfolio section.
 
 ## Assignment
 
@@ -211,68 +213,98 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
+- Component Design #1: Portfolio
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - This is a component to represent a personal portfolio made up of sections (e.g. About Me, Interests, Projects, Goals). Each section contains an ordered list of text entries. The kernel here is very simple, it only allows sections to be added/removed and information about the sections provided. This is similar to the Map kernel. The secondary interface provides the more useful functionality for managing a portfolio of personal information, for example adding individual entries and generating a Markdown version of the entire portfolio.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void addSection(String name, Queue entries) Adds a new section called name with the given entries to this.
+      - Precondition: There is no section with the given name. The given queue will be replaced by an empty queue.
+    - Queue removeSection(String name) Removes the section with the given name and returns the entries.
+      - Precondition: The section exists.
+    - <Map.Pair> removeAnySection() Removes and returns an arbitrary section.
+      - Precondition: There is at least one section.
+    - boolean hasSection(String name) Returns true if there is a section with the given name.
+    - int numberOfSections() Returns the number of sections.
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - void addEntry(String sectionName, String entry) Adds an entry to the end of the section with name sectionName. Creates a new section if needed.
+    - int numberOfEntries(String sectionName) Returns the number of entries in the section with name sectionName.
+    - int totalEntries() Returns the total number of entries.
+    - void renameSection(String oldName, String newName) Renames a section.
+    - void merge(Portfolio other) Adds all sections and entries from other to this. If there is a section with the same name in this then combine the entries.
+    - String toMarkdown() Returns this as a String in Markdown format. Each section will have its own heading. Each entry will be a bullet point.
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. All parts of this that extend Standard will have clear, newInstance and transferFrom mutating it as well. The kernel methods will add/remove sections.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. removeAnySection returns Map.Pair> just like Map.removeAny. It would also be expected that the implementation uses a Map> internally.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Probably just constants. Clients are less likely to type the default section names ("About Me", "Interests", "Projects", "Goals") incorrectly. No enum required.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - So, for example, addEntry can call hasSection. If the section is present, removeSection is called, the new entry is enqueued onto the queue returned, and addSection is called to add the section back. If it is not present then create a new queue containing the single entry, and call addSection. toMarkdown can call removeAnySection repeatedly to build up the string. Each section will be removed and added to a temporary Portfolio. Once this is done, transferFrom can be used to restore it.
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: Timeline
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - This component allows me to represent my life and career as a timeline. This can be done by adding events to represent when I started at OSU, each internship, project and volunteering role. Events will always be added in order of date. The component uses a similar design to the SortingMachine. It has an insert mode, where events can be added in any order. It also has an extract mode, where events are extracted in order from earliest to latest. The kernel only contains functionality to sort the events. The secondary methods contain functionality to filter events by year and create a markdown timeline.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void add(Event e): adds e to this (requires that this is in insertion mode)
+    - void changeToExtractionMode(): switches this from insertion mode to extraction mode
+    - Event removeFirst(): removes and returns the earliest event in this (requires that this is in extraction mode and is not empty)
+    - boolean isInInsertionMode(): reports whether this is in insertion mode
+    - int size(): reports the number of events in this
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - Queue eventsInYear(int year) - returns a queue of all events that happened in year, ordered from earliest to latest
+    - int numberOfEventsInCategory(Event.Category c) - returns the number of events in category c
+    - void removeEventsBefore(int year) - removes all events that happened before year
+    - void merge(PortfolioTimeline other) - adds all events from other to this
+    - String toMarkdown() - returns this as a markdown timeline, each event is on its own bullet point ordered from earliest to latest
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. It extends Standard, add, changeToExtractionMode, and removeFirst will all be changed.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. It will have an unchangeable Event class which will contain a year, month, title, description, and category. Because it is unchangeable there will be no harmful aliasing when passing around events. I would also need a Comparator to sort events by date.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. We could have an enum Event.Category which includes the options EDUCATION, INTERNSHIP, PROJECT and VOLUNTEER. We could also have constants to represent the valid months (1-12).
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. For example, eventsInYear enters extraction mode, removes the first element repeatedly until empty. It adds each event to the result queue if the year matches, however adds it to a temporary Timeline regardless. After this, it adds everything back whilst switching to extraction mode. The toMarkdown method works the same way, but adds a bullet point for each event.
 
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
+- Component Design #3: TrackingMyGoals
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - This component is used to represent the ‘future goals’ section of my portfolio. It allows me to create goals (e.g ‘Land a data science internship’, or "Finish my first full-stack AI project") and keeps track of how far along each goal I am. Every goal will always be in the state of planned, in progress or completed. The kernel will only add, move forward and delete goals. The secondary methods will allow me to ask questions such as how many goals have I completed? and print an up to date ‘Goals’ section.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void addGoal(String goal) Adds a goal to this with status PLANNED. Assumes goal is not in this.
+    - void advanceGoal(String goal) Advances the status of goal from PLANNED to IN_PROGRESS, or from IN_PROGRESS to ACHIEVED. Assumes goal is in this and not in status ACHIEVED.
+    - Status removeGoal(String goal) Removes a goal from this and returns its status. Assumes goal is in this.
+    - Map.Pair removeAnyGoal() Removes and returns an arbitrary goal from this. Assumes this is non-empty.
+    - boolean containsGoal(String goal) Returns true if this contains a goal called goal.
+    - int getNumGoals() Returns the number of goals in this.
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - Status statusOf(String goal) Returns status of goal.
+    - int countWithStatus(Status s) Returns number of goals with status s.
+    - Queue goalsWithStatus(Status s) Returns a queue containing all goals with status s.
+    - int percentAchieved() Returns the percentage of goals have been ACHIEVED. If no goals 0 is returned.
+    - void clearAchieved() Removes all goals that have status ACHIEVED.
+    - String toMarkdown() Returns a markdown string containing all goals as a checklist. Example: - [x] achieved goal - [ ] planned goal
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. All of these methods add to Standard. The add, advance and remove methods all affect it.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. The removeAnyGoal method returns a Map.Pair. I would expect to use a Map.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. We could have an enum Status with PLANNED, IN_PROGRESS, and ACHIEVED. Since enums are immutable there is no issue with aliasing when we return them.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. For example statusOf can call removeGoal to get the status then addGoal and advanceGoal the correct number of times to return the goal to how it was. countWithStatus can call removeAnyGoal repeatedly, count the matches and save them into a temporary GoalTracker then call transferFrom to return this.
 
 ## Post-Assignment
 
@@ -299,13 +331,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
-## YYYY.MM.DD
+## 2026.11.11
 
 ### Added
 
-- Designed a <!-- insert name of component 1 here --> component
-- Designed a <!-- insert name of component 2 here --> component
-- Designed a <!-- insert name of component 3 here --> component
+- Designed a <!-- Portfolio --> component
+- Designed a <!-- Timeline --> component
+- Designed a <!-- TrackingMyGoals --> component
 ```
 
 Here `YYYY.MM.DD` would be the date of your submission, such as 2024.04.21.

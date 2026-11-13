@@ -1,8 +1,8 @@
 # Portfolio Part 6: Finishing Touches
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) and delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) and delete this comment -->
-- **Due Date**: <!-- TODO: fill out with due date and time (e.g., 10/17 @ 3:10 PM EST) and delete this comment -->
+- **Name**: Aahan Kar
+- **Dot Number**: kar.50
+- **Due Date**: 11/12 @ 11:35 PM EST
 
 ## Assignment Overview
 
@@ -49,8 +49,6 @@ Many of these additional techniques are somewhat out of the scope of this
 course, but just knowing about them could set you up for long term success.
 
 ## Assignment Checklist
-
-<!-- TODO: browse the checklist then delete this comment -->
 
 To be sure you have completed everything on this assignment, we have littered
 this document with TODO comments. You can browse all of them in VSCode by
@@ -307,18 +305,18 @@ Take some time to fill them out honestly.
 > complete the portfolio project, how much better (or worse) do you think you
 > understand software development and why?
 
-<!-- TODO: discuss -->
+As well as understanding much better (due to having to make my own design choices on this project), I learned how to know what should go into the kernel and what should be secondary methods. In the classes previously I was always given an interface and implementation. However here I had to make these choices myself and experience the effects of them. Whilst writing Portfolio1L I realised that adding more methods to the kernel causes more representation code to be added to the kernel. I also learnt that just because something compiles doesn't mean it's correct. When writing the convention and correspondence for Portfolio1L I had to specify exactly what conditions must be true for my Map of Queues.
 
 > Also, did the portfolio project surface any gaps in your own knowledge of
 > software development. If so, what are those gaps and how did you address them?
 
-<!-- TODO: discuss -->
+Yes! Firstly, I didn’t fully understand how to extend Standard until the compiler told me that newInstance and transferFrom weren’t defined. This was because I had forgot to import Standard and extend Standard. I looked up how Standard was defined in the components library. Secondly, I wasn’t confident with git beyond adding, committing and pushing. I accidentally committed Part 4 files to the Interfaces branch. I had to look up how to use reset --soft, unstaging and force push. Lastly, I had never done testing without a reference implementation. I had to learn how to create a state using the kernel methods and then compare it to another portfolio that had been created using the same method. To overcome these issues, I looked carefully at my errors, looked through the source code in the library and fixed my mistakes gradually.
 
 > Finally, as a part of completing the portfolio project, to what extent has
 > your perspective of software development changed, if at all? In other words,
 > is software development something you still enjoy? If not, why not?
 
-<!-- TODO: discuss -->
+I still do. Probably even more so. I have changed how I see the fun parts. Where I previously got a kick out of making the program actually do stuff, I now get more satisfaction in designing it. Making sure that the minimum core is being used, and then convincing myself that the second order methods don’t need anything more than the core methods. Seeing all 18 of my initial behaviour checks pass. The frustrating things are the tools, like checkstyle errors and confusion between branches and PRs. However, this is a small price to pay and is getting easier every time.
 
 > One of the challenges of completing the portfolio project is picking up a lot
 > of skills on your own. Some of these skills are, of course, software skills.
@@ -326,29 +324,37 @@ Take some time to fill them out honestly.
 > this process. Therefore, the first question is what skills did you pick up
 > through this process?
 
-<!-- TODO: discuss -->
+- Designing an API by breaking down the component into kernel, better interface, abstract class and implementation.
+- Creating contracts (@requires, @ensures, @updates, @clears), representation invariant and abstraction function.
+- Using components from the OSU components library (Map, Queue, Standard) and transferFrom ownership.
+- Using real git practices including feature branch, PR stacking, reset of a bad commit and safe force push from GitHub Desktop.
+- Javadoc, keeping a changelog file with date based (CalVer) versioning. Mermaid class diagram.
 
 > The follow-up question is: could you rephrase these skills you picked up
 > as bullet points that you could put on a resume? Try it below.
 
-<!-- TODO: discuss -->
+- Designed and implemented a Java component comprised of kernel interface, improved interface, abstract class and Map/Queue implementations following design by contract, including documentation to show conventions and mappings.
+
+- Implemented a JUnit 4 testing suite for the kernel, Standard and secondary methods. Verified that state can be restored without a reference implementation.
+
+- Managed a multi-phase project on GitHub using feature branches, a stack of pull requests and Keep a Changelog.
+
+- Produced use cases containing programs, README, Javadoc and class diagrams to allow other developers to use my component.
 
 > Next, how has working on this project affected your career trajectory?
 > In other words, do you now hate the topic you picked? Or, are you even more
 > interested in it? Both outcomes are valuable to your personal development.
 
-<!-- TODO: discuss -->
+This has given me an interest in building rather than analysing. As I am studying Data Analytics, I would like to work within data analytics, data science or AI/ML engineering. This has shown me how the engineering part of this, with clean interfaces, testing and version control, can make analysis reusable. This aligns with what I have been doing in my internships so far, as the code needs to be readable by others. I do not dislike the topic I chose, but by creating a portfolio about myself I had to think more about what I wanted to show.
 
 > Finally, consider the skills you've picked up and your current career
 > trajectory. What are some things you could do to continue on your
 > career trajectory? Also, who are some mentors you could contact to help
 > you stay on your path?
 
-<!-- TODO: discuss -->
+Move forward by creating more public GitHub projects. My House Price Prediction and Diabetes Classification projects would need the same improvements to make them cleaner. This would include adding a README, tests and changelog. Learn more about CI tools such as GitHub Actions to automate testing. Practice writing tests on my python code. The members and advisors from BDAA that I worked with on my diabetes project can give feedback. My instructors from the OSU software courses can also give me feedback on my design decisions. Upperclassmen in Data Analytics can tell me which courses and projects helped them the most.
 
 ### Changelog
-
-<!-- TODO: update CHANGELOG then delete this comment -->
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
@@ -435,7 +441,5 @@ PDF to read this rubric as a table).
 If you'd like to give feedback for this assignment (or any assignment, really),
 make use of [this survey][survey]. Your feedback helps make assignments
 better for future students.
-
-<!-- TODO: follow the link to share your feedback then delete this comment -->
 
 [survey]: https://forms.gle/dumXHo6A4Enucdkq9
