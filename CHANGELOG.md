@@ -1,35 +1,30 @@
 # Changelog
 
-All major changes to this project will be recorded here.
+All notable changes to this project will be documented in this file.
 
-This changelog follows the format outlined in [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
-
-The project uses [Calendar Versioning](https://calver.org/) in the format YYYY.0M.0D.
-
-## 2026.11.12
-
-### Added
-
-- Designed the abstract class `PortfolioSecondary` for the Portfolio component.
-- Every improved method was implemented using just kernel and `Standard` methods.
-- `toString`, `equals` and `hashCode` were all implemented using just kernel methods.
-
-### Changed
-
-- Section names were decided to be ordered using `String.compareTo` (uppercase comes before lowercase).
-- No changes were required to the kernel as `hasSection` and `numberOfSections` can be used to check all preconditions in the kernel.
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Calendar Versioning](https://calver.org/) of
+the following form: YYYY.0M.0D.
 
 ## 2026.11.12
 
 ### Added
 
-- Designed kernel and improved interfaces for the Portfolio component.
-- Designed a proof of concept for the Portfolio component.
+- Designed kernel implementation `Portfolio1L` for Portfolio component, represented as a `Map` of section names to `Queue`s of entries
+- Added convention and correspondence for `Portfolio1L`
+- Designed abstract class `PortfolioSecondary` for Portfolio component
+- Implemented all enhanced methods using only kernel and `Standard` methods
+- Implemented `toString`, `equals`, and `hashCode` using only kernel methods
+- Designed kernel and enhanced interfaces for Portfolio component
+- Designed proof of concept for Portfolio component
 
 ### Changed
 
-- Changed to use the OSU `Queue` and `Map.Pair` instead of `java.util` types.
-- Added a `sectionNames` method to the improved interface as the kernel doesn't allow you to iterate through sections.
-- Changed `numberOfEntries` to require the section to exist.
-- Specified that `toMarkdown` will output sections in alphabetical order.
-- Made `addSection`
+- Decided section names are ordered with `String.compareTo` (uppercase before lowercase)
+- No kernel changes were needed for `PortfolioSecondary`, since `hasSection` and `numberOfSections` can check every kernel precondition
+- Changed usage of `java.util` types to using OSU `Queue` and `Map.Pair`
+- Added `sectionNames` to enhanced interface as kernel can't iterate through sections
+- Made `numberOfEntries` require section to exist rather than return 0
+- Specified that `toMarkdown` outputs sections in alphabetical order
+- Made `addSection` clear the contents of the `entries` argument (as it is consumed)
+- Added suggested section name constants to kernel interface`
