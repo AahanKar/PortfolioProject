@@ -19,13 +19,13 @@ import components.standard.Standard;
  */
 
 public interface PortfolioKernel extends Standard<Portfolio> {
-    /** Suggested section name for personal background. */
+    // Suggested section name for personal background.
     String ABOUT_ME = "About Me";
-    /** Suggested section name for hobbies and interests. */
+    // Suggested section name for hobbies and interests.
     String INTERESTS = "Interests";
-    /** Suggested section name for projects. */
+    // Suggested section name for projects.
     String PROJECTS = "Projects";
-    /** Suggested section name for future goals. */
+    // Suggested section name for future goals.
     String GOALS = "Goals";
 
     /**

@@ -22,7 +22,7 @@ import components.queue.Queue1L;
 public class Portfolio1L extends PortfolioSecondary {
 
     /*
-     * Private members --------------------------------------------------------
+     * Private members
      */
 
     /**
@@ -38,7 +38,7 @@ public class Portfolio1L extends PortfolioSecondary {
     }
 
     /*
-     * Constructors -----------------------------------------------------------
+     * Constructors
      */
 
     /**
@@ -49,7 +49,7 @@ public class Portfolio1L extends PortfolioSecondary {
     }
 
     /*
-     * Standard methods -------------------------------------------------------
+     * Standard methods
      */
 
     @Override
@@ -73,17 +73,13 @@ public class Portfolio1L extends PortfolioSecondary {
         assert source != this : "Violation of: source is not this";
         assert source instanceof Portfolio1L : ""
                 + "Violation of: source is of dynamic type Portfolio1L";
-        /*
-         * This cast cannot fail since the assert above would have stopped
-         * execution in that case: source must be of dynamic type Portfolio1L.
-         */
         Portfolio1L localSource = (Portfolio1L) source;
         this.sections = localSource.sections;
         localSource.createNewRep();
     }
 
     /*
-     * Kernel methods ---------------------------------------------------------
+     * Kernel methods
      */
 
     @Override
@@ -93,7 +89,6 @@ public class Portfolio1L extends PortfolioSecondary {
         assert !this.sections.hasKey(name) : ""
                 + "Violation of: name is not the name of a section in this";
 
-        // take over the entries, leaving the caller's queue empty (cleared)
         Queue<String> mine = new Queue1L<String>();
         mine.transferFrom(entries);
         this.sections.add(name, mine);
